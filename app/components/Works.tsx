@@ -60,9 +60,11 @@ const Works = () => {
                       className="w-full"
                     />
                     <div className="p-4">
-                      <h3 className="mb-2 text-xl font-semibold transition-colors group-hover:text-purple-400">
-                        {work.title}
-                      </h3>
+                    <h3 className="mb-2 text-xl font-semibold text-white transition-colors">
+  {work.title}
+</h3>
+
+
                     </div>
                   </div>
                 </Link>
