@@ -13,9 +13,17 @@ const Contact = () => {
   })
 
   return (
-    // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-    <section id="contact" ref={ref} className="playwrite-vn-guides-regular my-20 rounded-lg bg-gray-900 bg-opacity-50 py-20 shadow-xl">
-      <div className="container mx-auto max-w-4xl px-4">
+    <section
+      id="contact"
+      ref={ref}
+      className="playwrite-vn-guides-regular relative my-20 rounded-lg py-20 shadow-xl overflow-hidden"
+    >
+    {/* グラデーション背景 */}
+    <div className="absolute inset-0 z-0 animate-gradient bg-gradient-to-r from-purple-700 via-pink-600 to-purple-700 opacity-70"></div>
+    {/* 透過レイヤーで可読性向上 */}
+    <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+
+      <div className="relative container mx-auto max-w-4xl px-4">
         <Parallax translateY={["-20px", "20px"]}>
           <motion.h2
             className="mb-12 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-center text-4xl font-bold text-transparent"
@@ -26,6 +34,7 @@ const Contact = () => {
             お問い合わせ
           </motion.h2>
         </Parallax>
+
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <Parallax translateX={["-50px", "50px"]}>
             <motion.div
@@ -80,6 +89,7 @@ const Contact = () => {
               </form>
             </motion.div>
           </Parallax>
+
           <Parallax translateX={["50px", "-50px"]}>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -110,4 +120,3 @@ const Contact = () => {
 }
 
 export default Contact
-

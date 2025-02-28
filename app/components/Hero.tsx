@@ -7,7 +7,19 @@ import { Parallax } from "react-scroll-parallax"
 
 const Hero = () => {
   return (
-    <section className="playwrite-vn-guides-regular relative flex min-h-screen items-center justify-center overflow-hidden px-4">
+    <motion.section
+      className="playwrite-vn-guides-regular relative flex min-h-screen items-center justify-center overflow-hidden px-4"
+      animate={{
+        background: [
+          "linear-gradient(to bottom, #000000, #1A1A1A)",
+          "linear-gradient(to bottom, #1A1A1A, #3D1A5B)",
+          "linear-gradient(to bottom, #3D1A5B,rgb(54, 0, 92))",
+          "linear-gradient(to bottom, #1A1A1A, #3D1A5B)",
+          "linear-gradient(to bottom, #000000, #1A1A1A)",
+        ],
+      }}
+      transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
+    >
       <Parallax translateY={["-50px", "50px"]}>
         <div className="z-10 max-w-4xl text-center">
           <motion.h1
@@ -55,9 +67,8 @@ const Hero = () => {
       >
         <ArrowDown className="animate-bounce text-purple-400" size={32} />
       </motion.div>
-    </section>
+    </motion.section>
   )
 }
 
 export default Hero
-

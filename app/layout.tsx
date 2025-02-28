@@ -70,7 +70,8 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-gradient-to-b from-blue-400 to-blue-900 font-sans antialiased",
+          "min-h-screen bg-gradient-to-b from-black to-gray-900 font-sans antialiased"
+,
           fontSans.variable
         )}
       >
