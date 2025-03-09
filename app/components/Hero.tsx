@@ -8,7 +8,7 @@ import { Parallax } from "react-scroll-parallax";
 const Hero = () => {
   return (
     <motion.section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 bg-gradient-to-b from-gray-900 to-black"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-gray-900 to-black px-4"
       animate={{
         background: [
           "linear-gradient(to bottom, #1A1A1A, #3D1A5B)",
@@ -16,7 +16,7 @@ const Hero = () => {
           "linear-gradient(to bottom, #1A1A1A, #3D1A5B)",
         ],
       }}
-      transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
+      transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
     >
       <Parallax translateY={["-50px", "50px"]}>
         <div className="z-10 max-w-4xl text-center">

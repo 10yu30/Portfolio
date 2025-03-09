@@ -1,58 +1,13 @@
 // app/layout.tsx
-// import "@/styles/globals.css"
-// import { Metadata } from "next"
-
-// import { siteConfig } from "@/config/site"
-// import { fontSans } from "@/lib/fonts"
-// import { cn } from "@/lib/utils"
-// import { ThemeProvider } from "@/components/theme-provider"
-
-// export const metadata: Metadata = {
-//   title: {
-//     default: "山田太郎のポートフォリオ",
-//     template: `%s | 山田太郎のポートフォリオ`,
-//   },
-//   description: "Web開発者・UIデザイナー 山田太郎のポートフォリオサイトです。",
-//   themeColor: [
-//     { media: "(prefers-color-scheme: light)", color: "white" },
-//     { media: "(prefers-color-scheme: dark)", color: "black" },
-//   ],
-//   icons: {
-//     icon: "/favicon.ico",
-//     shortcut: "/favicon-16x16.png",
-//     apple: "/apple-touch-icon.png",
-//   },
-// }
-
-// interface RootLayoutProps {
-//   children: React.ReactNode
-// }
-
-// export default function RootLayout({ children }: RootLayoutProps) {
-//   return (
-//     <html lang="ja" suppressHydrationWarning>
-//       <body
-//         className={cn(
-//           "min-h-screen bg-background font-sans antialiased",
-//           fontSans.variable
-//         )}
-//       >
-//         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-//           {children}
-//         </ThemeProvider>
-//       </body>
-//     </html>
-//   )
-// }
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import type React from "react"; // Import React
+import type React from "react";
 import { cn } from "@/lib/utils";
 import { fontSans } from "@/lib/fonts";
 import SpaceBackground from "@/app/components/SpaceBackground";
 import ClientWrapper from "@/components/ClientWrapper";
-import { ThemeProvider } from "@/components/theme-provider"; // 修正
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,10 +30,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="relative overflow-hidden min-h-screen">
+        <div className="relative min-h-screen overflow-hidden">
           <SpaceBackground />
           <div className="relative z-10">
-            <ThemeProvider> {/* 修正 */}
+            <ThemeProvider>
               <ClientWrapper>{children}</ClientWrapper>
             </ThemeProvider>
           </div>

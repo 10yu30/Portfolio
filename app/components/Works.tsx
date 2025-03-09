@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 // app/components/Works.tsx
 "use client";
 
@@ -30,9 +31,9 @@ const Works = () => {
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
 
   return (
-    <section id="works" ref={ref} className="relative my-20 rounded-lg py-20 shadow-xl overflow-hidden bg-gradient-to-r from-gray-900 via-black to-gray-900">
+    <section id="works" ref={ref} className="relative my-20 overflow-hidden rounded-lg bg-gradient-to-r from-gray-900 via-black to-gray-900 py-20 shadow-xl">
       <div className="absolute inset-0 z-0 opacity-70"></div>
-      <div className="relative container mx-auto max-w-6xl px-4">
+      <div className="container relative mx-auto max-w-6xl px-4">
         <Parallax translateY={["-20px", "20px"]}>
           <motion.h2 className="mb-12 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-center text-4xl font-extrabold text-transparent"
             initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: "easeOut" }}>
@@ -44,9 +45,9 @@ const Works = () => {
           {works.map((work, index) => (
             <Parallax key={work.id} translateY={["50px", "-50px"]} scale={[0.8, 1]} opacity={[0.5, 1]}>
               <motion.div initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}>
-                <button onClick={() => setSelectedWork(work)} className="w-full cursor-pointer group focus:outline-none">
+                <button onClick={() => setSelectedWork(work)} className="group w-full cursor-pointer focus:outline-none">
                   <div className="overflow-hidden rounded-lg bg-gray-800 bg-opacity-50 shadow-lg transition-all duration-300 group-hover:scale-105">
-                    <Image src={work.image || "/placeholder.svg"} alt={work.title} width={600} height={400} className="w-full h-64 object-cover rounded-t-lg" />
+                    <Image src={work.image || "/placeholder.svg"} alt={work.title} width={600} height={400} className="h-64 w-full rounded-t-lg object-cover" />
                     <div className="p-4">
                       <h3 className="mb-2 text-xl font-semibold text-white transition-colors">{work.title}</h3>
                     </div>
@@ -67,13 +68,13 @@ const Works = () => {
       </div>
 
       {selectedWork && (
-        <Dialog open={Boolean(selectedWork)} onClose={() => setSelectedWork(null)} className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 backdrop-blur-md">
-          <Dialog.Panel className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h2 className="text-2xl font-bold text-white mb-4">{selectedWork.title}</h2>
-            <p className="text-gray-300 mb-2"><strong>制作時間 : </strong> {selectedWork.duration}</p>
-            <p className="text-gray-300 mb-2"><strong>制作人数 : </strong> {selectedWork.team}</p>
-            <p className="text-gray-300 mb-4"><strong>使用言語 : </strong> {selectedWork.tech}</p>
-            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="block text-center bg-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-purple-700">サイトへ</a>
+        <Dialog open={Boolean(selectedWork)} onClose={() => setSelectedWork(null)} className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-md">
+          <Dialog.Panel className="w-full max-w-md rounded-lg bg-gray-900 p-6 shadow-lg">
+            <h2 className="mb-4 text-2xl font-bold text-white">{selectedWork.title}</h2>
+            <p className="mb-2 text-gray-300"><strong>制作時間 : </strong> {selectedWork.duration}</p>
+            <p className="mb-2 text-gray-300"><strong>制作人数 : </strong> {selectedWork.team}</p>
+            <p className="mb-4 text-gray-300"><strong>使用言語 : </strong> {selectedWork.tech}</p>
+            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="block rounded-lg bg-purple-600 px-4 py-2 text-center text-white shadow-lg hover:bg-purple-700">サイトへ</a>
           </Dialog.Panel>
         </Dialog>
       )}

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 // app/works/page.tsx
 "use client";
 
@@ -73,7 +74,7 @@ export default function WorksPage() {
                   animate="visible"
                   transition={{ duration: 0.5 }}
                 >
-                  <button onClick={() => setSelectedWork(work)} className="w-full cursor-pointer group focus:outline-none">
+                  <button onClick={() => setSelectedWork(work)} className="group w-full cursor-pointer focus:outline-none">
                     <div className="overflow-hidden rounded-lg bg-gray-800 bg-opacity-50 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                       <Image
                         src={work.image || "/placeholder.svg"}
@@ -96,14 +97,14 @@ export default function WorksPage() {
       <Footer />
 
       {selectedWork && (
-        <Dialog open={Boolean(selectedWork)} onClose={() => setSelectedWork(null)} className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 backdrop-blur-md">
-          <Dialog.Panel className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h2 className="text-2xl font-bold text-white mb-4">{selectedWork.title}</h2>
-            <p className="text-gray-300 mb-2"><strong>カテゴリー:</strong> {selectedWork.category}</p>
-            <p className="text-gray-300 mb-2"><strong>制作時間:</strong> {selectedWork.duration}</p>
-            <p className="text-gray-300 mb-2"><strong>制作人数:</strong> {selectedWork.team}</p>
-            <p className="text-gray-300 mb-4"><strong>使用技術:</strong> {selectedWork.tech}</p>
-            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="block text-center bg-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-purple-700">サイトへ</a>
+        <Dialog open={Boolean(selectedWork)} onClose={() => setSelectedWork(null)} className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-md">
+          <Dialog.Panel className="w-full max-w-md rounded-lg bg-gray-900 p-6 shadow-lg">
+            <h2 className="mb-4 text-2xl font-bold text-white">{selectedWork.title}</h2>
+            <p className="mb-2 text-gray-300"><strong>カテゴリー:</strong> {selectedWork.category}</p>
+            <p className="mb-2 text-gray-300"><strong>制作時間:</strong> {selectedWork.duration}</p>
+            <p className="mb-2 text-gray-300"><strong>制作人数:</strong> {selectedWork.team}</p>
+            <p className="mb-4 text-gray-300"><strong>使用技術:</strong> {selectedWork.tech}</p>
+            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="block rounded-lg bg-purple-600 px-4 py-2 text-center text-white shadow-lg hover:bg-purple-700">サイトへ</a>
           </Dialog.Panel>
         </Dialog>
       )}
