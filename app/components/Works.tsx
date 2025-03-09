@@ -70,9 +70,9 @@ const Works = () => {
         <Dialog open={Boolean(selectedWork)} onClose={() => setSelectedWork(null)} className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 backdrop-blur-md">
           <Dialog.Panel className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md">
             <h2 className="text-2xl font-bold text-white mb-4">{selectedWork.title}</h2>
-            <p className="text-gray-300 mb-2"><strong>制作時間:</strong> {selectedWork.duration}</p>
-            <p className="text-gray-300 mb-2"><strong>制作人数:</strong> {selectedWork.team}</p>
-            <p className="text-gray-300 mb-4"><strong>使用言語:</strong> {selectedWork.tech}</p>
+            <p className="text-gray-300 mb-2"><strong>制作時間 : </strong> {selectedWork.duration}</p>
+            <p className="text-gray-300 mb-2"><strong>制作人数 : </strong> {selectedWork.team}</p>
+            <p className="text-gray-300 mb-4"><strong>使用言語 : </strong> {selectedWork.tech}</p>
             <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="block text-center bg-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-purple-700">サイトへ</a>
           </Dialog.Panel>
         </Dialog>
