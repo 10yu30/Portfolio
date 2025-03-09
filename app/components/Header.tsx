@@ -1,53 +1,46 @@
 // app/components/Header.tsx
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { usePathname } from "next/navigation"
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const pathname = usePathname()
-
-  const isHomePage = pathname === "/"
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   const scrollTo = (id: string) => {
     if (isHomePage) {
-      const element = document.getElementById(id)
+      const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="playwrite-vn-guides-regular fixed z-10 w-full bg-[#1A1A1A] px-6 py-4 text-[#F0F0F0]">
+    <motion.header 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 z-50 w-full bg-opacity-80 backdrop-blur-md bg-gray-900 px-6 py-4 text-gray-100 shadow-lg"
+    >
       <div className="container mx-auto flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-[#BB86FC]">
+        <Link href="/" className="text-2xl font-extrabold text-purple-400 tracking-wide">
           Portfolio
         </Link>
         <nav className="hidden space-x-6 md:flex">
-          <Link
-            href={isHomePage ? "#profile" : "/#profile"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => isHomePage && scrollTo("profile")}
-          >
+          <Link href={isHomePage ? "#profile" : "/#profile"} className="hover:text-purple-400" onClick={() => isHomePage && scrollTo("profile")}>
             プロフィール
           </Link>
-          <Link
-            href={isHomePage ? "#works" : "/#works"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => isHomePage && scrollTo("works")}
-          >
+          <Link href={isHomePage ? "#works" : "/#works"} className="hover:text-purple-400" onClick={() => isHomePage && scrollTo("works")}>
             作品一覧
           </Link>
-          <Link
-            href={isHomePage ? "#contact" : "/#contact"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => isHomePage && scrollTo("contact")}
-          >
+          <Link href={isHomePage ? "#contact" : "/#contact"} className="hover:text-purple-400" onClick={() => isHomePage && scrollTo("contact")}>
             お問い合わせ
           </Link>
         </nav>
@@ -56,42 +49,19 @@ const Header = () => {
         </button>
       </div>
       {isMenuOpen && (
-        <nav className="mt-4 flex flex-col space-y-4 md:hidden">
-          <Link
-            href={isHomePage ? "#profile" : "/#profile"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => {
-              isHomePage && scrollTo("profile")
-              setIsMenuOpen(false)
-            }}
-          >
-            プロフィール
-          </Link>
-          <Link
-            href={isHomePage ? "#works" : "/#works"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => {
-              isHomePage && scrollTo("works")
-              setIsMenuOpen(false)
-            }}
-          >
-            作品一覧
-          </Link>
-          <Link
-            href={isHomePage ? "#contact" : "/#contact"}
-            className="transition-colors hover:text-[#BB86FC]"
-            onClick={() => {
-              isHomePage && scrollTo("contact")
-              setIsMenuOpen(false)
-            }}
-          >
-            お問い合わせ
-          </Link>
-        </nav>
+        <motion.nav 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mt-4 flex flex-col space-y-4 md:hidden"
+        >
+          <Link href={isHomePage ? "#profile" : "/#profile"} className="hover:text-purple-400" onClick={() => { isHomePage && scrollTo("profile"); setIsMenuOpen(false); }}>プロフィール</Link>
+          <Link href={isHomePage ? "#works" : "/#works"} className="hover:text-purple-400" onClick={() => { isHomePage && scrollTo("works"); setIsMenuOpen(false); }}>作品一覧</Link>
+          <Link href={isHomePage ? "#contact" : "/#contact"} className="hover:text-purple-400" onClick={() => { isHomePage && scrollTo("contact"); setIsMenuOpen(false); }}>お問い合わせ</Link>
+        </motion.nav>
       )}
-    </header>
-  )
-}
+    </motion.header>
+  );
+};
 
-export default Header
-
+export default Header;
